@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block 'main' %}
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="number"] {
+        width: 200px; /* Adjust width as needed */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+<center>
+    <form method="POST" action="/otp">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="otp">OTP</label>
+            <input type="number" id="otp" name="otp" class="form-control m-1">
+            <button type="submit" class="btn btn-primary m-1">Submit</button>
+        </div>
+    </form>
+</center>
+
+{% endblock 'main' %}
