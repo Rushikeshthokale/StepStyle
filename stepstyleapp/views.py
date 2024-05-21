@@ -43,81 +43,7 @@ def userlogout(request):
 
     
         
-# def register(request):
-#     if request.method=='GET':
-#        return render(request,'register.html')
-#     else:
-#         context={}
-#         n=request.POST['username']
-#         e=request.POST.get['email']
-#         p=request.POST['password']
-#         cp=request.POST['confirmpass']
-#         op=request.POST['otp']
-        
-        
-#         if n=='' or e=='' or p==''or cp=='':
-#             context['error']="Please enter all the fields!!!!"
-#             return render(request,'register.html',context)
-#         elif p!=cp:
-#             context['error']="Password and Confirm password must be Same"
-#             return render(request,'register.html',context)
-#         # elif op!=op1:
-#         #     context['error']="Incorrect OTP!!!"
-#         #     return render(request,'register.html',context)
-#         else:
-           
-#             user=User.objects.create(username=n,email=e)
-#             user.set_password(p) #To set encrypted password
-#             user.save()
-#             context['success']="Registered Successfully!! Please Login"
-#             # return render(request,'login.html',context)
-#             messages.success(request,"Successfully Logged In !!!")
-#             op1=random.randrange(1000,9999)
-#             request.session['email']=op1
-#             msg_body = 'Order id is:'+str(op1)
-#             send_mail(
-#             "OTP",
-#             msg_body,
-#             "rushithokale21@gmail.com",
-#             [e],
-#             fail_silently=False
-#             )
-            
-#             return redirect('/login')
-# def register(request):
-#     if request.method == 'GET':
-#         return render(request, 'register.html')
-#     else:
-#         n = request.POST['username']
-#         e = request.POST('email')  # Corrected method call
-#         p = request.POST['password']
-#         cp = request.POST['confirmpass']   
-#         if not all([n, e, p, cp]):
-#             messages.error(request, "Please enter all the fields!!!")
-#             return render(request, 'register.html')
-#         elif p != cp:
-#             messages.error(request, "Password and Confirm password must be the same")
-#             return render(request, 'register.html')
-#         # Add code to verify OTP here
-#         else:
-#             user = User.objects.create_user(username=n, email=e, password=p)
-#             # No need to call user.set_password, create_user sets password encrypted
-#             user.save()
-#             messages.success(request, "Registered Successfully!! Please Login")
-            
-#             # Generate OTP and send email
-#             op1 = random.randrange(1000, 9999)
-#             request.session['email'] = e
-#             msg_body = 'Your OTP is: ' + str(op1)
-#             send_mail(
-#                 "OTP",
-#                 msg_body,
-#                 "rushithokale21@gmail.com",
-#                 [e],
-#                 fail_silently=False
-#             )
-            
-#             return redirect('/otp') 
+
 def register(request):
     if request.method=='GET':
        return render(request,'register.html')
@@ -139,20 +65,7 @@ def register(request):
             user.save()
             messages.success(request,"Successfully Logged In !!!")
             return redirect('/login')
-             # Generate OTP and send email
-            # op1 = random.randrange(1000, 9999)
-            # request.session['email'] = e
-            # msg_body = 'Your OTP is: ' + str(op1)
-            # send_mail(
-            #     "OTP",
-            #     msg_body,
-            #     "rushithokale21@gmail.com",
-            #     [e],
-            #     fail_silently=False
-            # )  
-            # return redirect('/otp') 
-            # context['success']="Registered Successfully!! Please Login"
-            # return render(request,'login.html',context)
+             
             
 
 
@@ -311,7 +224,7 @@ def placeorder(request):
             total=0
             for cart in data:
                 total +=cart.pid.price * cart.quantity
-            client=razorpay.Client(auth=("rzp_test_ZAKvIqIIsGQ3fe","SSfAEiyQrYNk3SciDLWjetRV"))
+            client=razorpay.Client(auth=("razor pay key","SSfAEiyQrYNk3SciDLWjetRV"))
             data={"amount":total*100,'currency':"INR",'receipt':''}
             payment=client.order.create(data=data)
             print(payment)
@@ -344,7 +257,7 @@ def placeeorder(request):
     send_mail(
     "Order placed successfully!!", #subject
     msg_body, 
-    "rushithokale21@gmail.com", #from
+    "from gmail", #from
     [custEmail],
     fail_silently=False,
     )    
