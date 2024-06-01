@@ -1,5 +1,6 @@
 Stepstyle Project:
 Steps to Run: 1.Download the Code 2.Install following packages: i)django ii)mysqlclient iii)pillow iv)razorpay 3.Install virtual environment 4.Paste your razorpay key in settings.py,pay.html,views.py 5.Make the migrations using: i)python manage.py makemigrations ii)python manage.py migrate 6.Create the admin user using: i)python manage.py createsuperuser 7.Run the project using : python manage.py runserver
+
 Home Page:
 ![Screenshot 2024-06-01 134631](https://github.com/Rushikeshthokale/stepstyle/assets/87907210/114e5684-bbde-42e2-a67c-d24145d7e350)
 Cart Page:
